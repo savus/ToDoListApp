@@ -1,0 +1,7 @@
+.main-container {
+  display: flex;
+  max-width: 640px;
+  border: 1px solid black;
+  justify-content: center;
+  gap: 20px;
+}

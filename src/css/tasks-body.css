@@ -1,0 +1,13 @@
+.tasks-body .heading {
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid black;
+}
+
+.tasks-body .task {
+  display: flex;
+  padding: 20px 10px;
+  border-bottom: 1px solid black;
+  gap: 20px;
+  justify-content: space-between;
+}

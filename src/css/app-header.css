@@ -1,0 +1,16 @@
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.app-header .app-title {
+  font-size: var(--size-40);
+  line-height: 0.8;
+}
+
+.app-header .sub-heading {
+  color: var(--font-soft);
+  font-weight: 400;
+}

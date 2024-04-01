@@ -1,0 +1,10 @@
+.manage-tasks-btn {
+  font-size: var(--size-30);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+  color: rgb(104, 163, 214);
+}
+
+.manage-tasks-btn:hover {
+  background-color: var(--bg-soft);
+}
