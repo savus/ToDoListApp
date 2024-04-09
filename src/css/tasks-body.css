@@ -11,3 +11,31 @@
   gap: 20px;
   justify-content: space-between;
 }
+
+.tasks-body .task-content,
+.tasks-body .task-input-field {
+  line-height: 2;
+  font-size: var(--size-18);
+  letter-spacing: 1px;
+}
+
+.tasks-body .task.edit-mode .task-content {
+  display: none;
+}
+
+.tasks-body .task-input-field {
+  padding-left: 10px;
+  color: #888;
+  border-radius: 8px;
+  outline: none;
+  display: none;
+}
+
+.tasks-body .task.edit-mode .task-input-field {
+  display: unset;
+}
+
+.tasks-body .button-group {
+  display: flex;
+  gap: 15px;
+}
