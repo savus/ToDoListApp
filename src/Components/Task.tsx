@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { TTask } from "../types";
 
-export const Task = ({ content }: { content: string }) => {
+export const Task = ({
+  task: { id, content, isCompleted },
+}: {
+  task: TTask;
+}) => {
   const [editMode, setEditMode] = useState(false);
   const editModeActive = () => (editMode ? "edit-mode" : "");
+  const taskIsCompleted = () => (isCompleted === true ? "completed" : "");
   return (
-    <div className={`task ${editModeActive()}`}>
+    <div className={`task ${editModeActive()} ${taskIsCompleted()}`}>
       <div className="task-content">{content}</div>
       <input type="text" className="task-input-field" placeholder={content} />
       <div className="button-group">
