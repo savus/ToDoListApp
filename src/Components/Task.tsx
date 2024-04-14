@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { TTask } from "../types";
+import toast from "react-hot-toast";
 
-export const Task = ({ task: { content } }: { task: TTask }) => {
+export const Task = ({
+  task: { id, content },
+  updateTask,
+}: {
+  task: TTask;
+  updateTask: (taskInfo: Partial<TTask>) => Promise<unknown>;
+}) => {
   const [editMode, setEditMode] = useState(false);
   const [contentInput, setContentInput] = useState(content);
   const editModeActive = () => (editMode ? "edit-mode" : "");
@@ -20,6 +27,10 @@ export const Task = ({ task: { content } }: { task: TTask }) => {
           className="edit-button btn btn-primary"
           onClick={(e) => {
             e.preventDefault();
+            if (editMode === true) {
+              updateTask({ id: id, content: contentInput });
+            }
+            setEditMode(!editMode);
           }}
         >
           Edit

@@ -19,6 +19,18 @@ export const TasksBody = () => {
       .finally(() => setIsLoading(false));
   };
 
+  const updateTask = (taskInfo: Partial<TTask>) => {
+    setIsLoading(true);
+    return Requests.updateTask(taskInfo)
+      .then(refetchData)
+      .catch((e) => {
+        toast.error(e);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   useEffect(() => {
     refetchData();
   }, []);
@@ -27,7 +39,7 @@ export const TasksBody = () => {
     <div className="tasks-body">
       <h3 className="heading">Tasks List</h3>
       {allTasks.map((task) => (
-        <Task key={task.id} task={task} />
+        <Task key={task.id} task={task} updateTask={updateTask} />
       ))}
     </div>
   );

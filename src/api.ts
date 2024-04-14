@@ -11,6 +11,19 @@ const getAllTasks = (): Promise<TTask[]> =>
     return response.json();
   });
 
+const updateTask = (taskInfo: Partial<TTask>): Promise<TTask[]> =>
+  fetch(`${base_url}/${endPoint}/${taskInfo.id}`, {
+    method: "PATCH",
+    body: JSON.stringify(taskInfo),
+    headers: { "Content-Type": "application/json" },
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Could not update");
+    }
+    return response.json();
+  });
+
 export const Requests = {
   getAllTasks,
+  updateTask,
 };

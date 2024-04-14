@@ -1,7 +1,19 @@
 {
   "tasks": [
-    { "id": 0, "content": "Feed the dog", "isCompleted": false },
-    { "id": 1, "content": "Pet the dog", "isCompleted": false },
-    { "id": 2, "content": "Walk the dog", "isCompleted": false }
+    {
+      "id": "0",
+      "content": "Feed the ",
+      "isCompleted": false
+    },
+    {
+      "id": "1",
+      "content": "Pet the dog",
+      "isCompleted": false
+    },
+    {
+      "id": "2",
+      "content": "Walk the",
+      "isCompleted": false
+    }
   ]
 }
