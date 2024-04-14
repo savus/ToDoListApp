@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-import { Requests } from "../api";
 import "../css/tasks-body.css";
 import { Task } from "./Task";
-import { TTask } from "../types";
-import toast from "react-hot-toast";
 
 export const TasksBody = () => {
+<<<<<<< HEAD
   const [allTasks, setAllTasks] = useState<TTask[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,6 +43,14 @@ export const TasksBody = () => {
       {allTasks.map((task) => (
         <Task key={task.id} task={task} updateTask={updateTask} />
       ))}
+=======
+  return (
+    <div className="tasks-body">
+      <h3 className="heading">Tasks List</h3>
+
+      <Task content="Go Shopping" />
+      <Task content="Feed the dog" />
+>>>>>>> parent of d0d0d1b (create api file with successful "GET" fetch call)
     </div>
   );
 };
