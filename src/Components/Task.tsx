@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { TTask } from "../types";
 
-export const Task = ({ content }: { content: string }) => {
+export const Task = ({ task: { content } }: { task: TTask }) => {
   const [editMode, setEditMode] = useState(false);
   const [contentInput, setContentInput] = useState(content);
   const editModeActive = () => (editMode ? "edit-mode" : "");
