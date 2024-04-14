@@ -23,6 +23,10 @@
   display: none;
 }
 
+.tasks-body .task-content.completed {
+  text-decoration: line-through;
+}
+
 .tasks-body .task-input-field {
   padding-left: 10px;
   color: #888;

@@ -3,7 +3,7 @@ import { TTask } from "../types";
 import toast from "react-hot-toast";
 
 export const Task = ({
-  task: { id, content },
+  task: { id, content, isCompleted },
   updateTask,
 }: {
   task: TTask;
@@ -11,10 +11,13 @@ export const Task = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [contentInput, setContentInput] = useState(content);
-  const editModeActive = () => (editMode ? "edit-mode" : "");
+  const [completedState, setCompletedState] = useState(isCompleted);
+
+  const isEditModeActive = () => (editMode ? "edit-mode" : "");
+  const isTaskCompleted = () => (completedState ? "completed" : "");
   return (
-    <div className={`task ${editModeActive()}`}>
-      <div className="task-content">{content}</div>
+    <div className={`task ${isEditModeActive()}`}>
+      <div className={`task-content ${isTaskCompleted()}`}>{content}</div>
       <input
         type="text"
         className="task-input-field"
@@ -37,9 +40,15 @@ export const Task = ({
         </button>
         <button className="delete-button btn btn-primary">Delete</button>
       </div>
-      <button className="done-button btn btn-primary">
+      <button
+        className="done-button btn btn-primary"
+        onClick={() => {
+          setCompletedState(!completedState);
+          updateTask({ id: id, isCompleted: !completedState });
+        }}
+      >
         <i className="fa fa-checked"></i>
-        Done
+        {completedState ? "Unmark as Done" : "Mark as Done"}
       </button>
     </div>
   );
