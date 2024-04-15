@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { TTask } from "../types";
-import toast from "react-hot-toast";
+import { EditButton } from "./shared/EditButton";
+import { DeleteButton } from "./shared/DeleteButton";
+import { DoneButton } from "./shared/DoneButton";
+import { TextInput } from "./shared/TextInput";
 
 export const Task = ({
   task: { id, content, isCompleted },
@@ -18,38 +21,33 @@ export const Task = ({
   return (
     <div className={`task ${isEditModeActive()}`}>
       <div className={`task-content ${isTaskCompleted()}`}>{content}</div>
-      <input
-        type="text"
-        className="task-input-field"
-        placeholder={contentInput}
-        value={contentInput}
-        onChange={({ target }) => setContentInput(target.value)}
+      <TextInput
+        inputProps={{
+          type: "text",
+          className: "task-input-field",
+          placeholder: contentInput,
+          value: contentInput,
+          onChange: ({ target }) => setContentInput(target.value),
+        }}
       />
       <div className="button-group">
-        <button
-          className="edit-button btn btn-primary"
-          onClick={(e) => {
-            e.preventDefault();
+        <EditButton
+          onClick={() => {
             if (editMode === true) {
               updateTask({ id: id, content: contentInput });
             }
             setEditMode(!editMode);
           }}
-        >
-          Edit
-        </button>
-        <button className="delete-button btn btn-primary">Delete</button>
+        />
       </div>
-      <button
-        className="done-button btn btn-primary"
+      <DeleteButton onClick={() => {}} />
+      <DoneButton
+        completedState={completedState}
         onClick={() => {
           setCompletedState(!completedState);
           updateTask({ id: id, isCompleted: !completedState });
         }}
-      >
-        <i className="fa fa-checked"></i>
-        {completedState ? "Unmark as Done" : "Mark as Done"}
-      </button>
+      />
     </div>
   );
 };
