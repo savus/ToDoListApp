@@ -19,6 +19,18 @@ export const TasksBody = () => {
       .finally(() => setIsLoading(false));
   };
 
+  const deleteTask = (id: number) => {
+    setIsLoading(true);
+    return Requests.deleteTask(id)
+      .then(refetchData)
+      .catch((e) => {
+        toast.error(e);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   const updateTask = (taskInfo: Partial<TTask>) => {
     setIsLoading(true);
     return Requests.updateTask(taskInfo)
@@ -39,7 +51,12 @@ export const TasksBody = () => {
     <div className="tasks-body">
       <h3 className="heading">Tasks List</h3>
       {allTasks.map((task) => (
-        <Task key={task.id} task={task} updateTask={updateTask} />
+        <Task
+          key={task.id}
+          task={task}
+          updateTask={updateTask}
+          deleteTask={deleteTask}
+        />
       ))}
     </div>
   );

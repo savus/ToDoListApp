@@ -1,18 +1,8 @@
 {
   "tasks": [
     {
-      "id": "0",
-      "content": "Feed the ",
-      "isCompleted": false
-    },
-    {
       "id": "1",
       "content": "Pet the ",
-      "isCompleted": true
-    },
-    {
-      "id": "2",
-      "content": "Walk the",
       "isCompleted": true
     }
   ]

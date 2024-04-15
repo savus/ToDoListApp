@@ -8,9 +8,11 @@ import { TextInput } from "./shared/TextInput";
 export const Task = ({
   task: { id, content, isCompleted },
   updateTask,
+  deleteTask,
 }: {
   task: TTask;
   updateTask: (taskInfo: Partial<TTask>) => Promise<unknown>;
+  deleteTask: (id: number) => Promise<unknown>;
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [contentInput, setContentInput] = useState(content);
@@ -40,7 +42,11 @@ export const Task = ({
           }}
         />
       </div>
-      <DeleteButton onClick={() => {}} />
+      <DeleteButton
+        onClick={() => {
+          deleteTask(id);
+        }}
+      />
       <DoneButton
         completedState={completedState}
         onClick={() => {
