@@ -2,7 +2,7 @@
   "tasks": [
     {
       "id": "1",
-      "content": "Pet the ",
+      "content": "Pet the rabbit",
       "isCompleted": true
     }
   ]

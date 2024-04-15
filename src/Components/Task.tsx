@@ -4,15 +4,12 @@ import { EditButton } from "./shared/EditButton";
 import { DeleteButton } from "./shared/DeleteButton";
 import { DoneButton } from "./shared/DoneButton";
 import { TextInput } from "./shared/TextInput";
+import { useTasks } from "./Providers/TasksProvider";
 
 export const Task = ({
   task: { id, content, isCompleted },
-  updateTask,
-  deleteTask,
 }: {
   task: TTask;
-  updateTask: (taskInfo: Partial<TTask>) => Promise<unknown>;
-  deleteTask: (id: number) => Promise<unknown>;
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [contentInput, setContentInput] = useState(content);
@@ -20,6 +17,9 @@ export const Task = ({
 
   const isEditModeActive = () => (editMode ? "edit-mode" : "");
   const isTaskCompleted = () => (completedState ? "completed" : "");
+
+  const { updateTask, deleteTask } = useTasks();
+
   return (
     <div className={`task ${isEditModeActive()}`}>
       <div className={`task-content ${isTaskCompleted()}`}>{content}</div>
