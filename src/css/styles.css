@@ -92,32 +92,6 @@ ul {
   bottom: var(--bottom-on-click);
 }
 
-[data-tooltip] {
-  --tooltip-color: #fff;
-  --tooltip-bg: #363636;
-  --tooltip-speed: 350ms;
-  --tooltip-scale: 0;
-  position: relative;
-}
-
-[data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: -100%;
-  width: max-content;
-  padding: 5px;
-  border-radius: 10px;
-  color: var(--tooltip-color);
-  transform: scale(var(--tooltip-scale));
-  transform-origin: top center;
-  transition: transform var(--tooltip-speed) ease;
-  background-color: var(--tooltip-bg);
-}
-
-[data-tooltip]:hover::after {
-  --tooltip-scale: 1;
-}
-
 .main-container {
   display: flex;
   max-width: 896px;
@@ -141,4 +115,47 @@ ul {
 
 .manage-tasks-btn:hover {
   background-color: var(--bg-soft);
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip.above .tooltip-message {
+  top: -100%;
+  transform-origin: bottom center;
+}
+
+.tooltip.below .tooltip-message {
+  bottom: -100%;
+  transform-origin: top center;
+}
+
+.tooltip.left .tooltip-message {
+  right: 100%;
+  transform-origin: right center;
+}
+
+.tooltip.right .tooltip-message {
+  left: 100%;
+  transform-origin: left center;
+}
+
+.tooltip .tooltip-message {
+  --tooltip-color: #fff;
+  --tooltip-bg: #363636;
+  --tooltip-speed: 350ms;
+  --tooltip-scale: 0;
+  position: absolute;
+  padding: 5px;
+  border-radius: 10px;
+  color: var(--tooltip-color);
+  transform: scale(var(--tooltip-scale));
+  transition: transform var(--tooltip-speed) ease;
+  background-color: var(--tooltip-bg);
+  font-size: var(--size-20);
+}
+
+.tooltip:hover .tooltip-message {
+  --tooltip-scale: 1;
 }
