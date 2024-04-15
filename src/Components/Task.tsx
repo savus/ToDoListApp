@@ -18,7 +18,7 @@ export const Task = ({
   const isEditModeActive = () => (editMode ? "edit-mode" : "");
   const isTaskCompleted = () => (completedState ? "completed" : "");
 
-  const { updateTask, deleteTask } = useTasks();
+  const { updateTaskOpt, deleteTask } = useTasks();
 
   return (
     <div className={`task ${isEditModeActive()}`}>
@@ -36,7 +36,7 @@ export const Task = ({
         <EditButton
           onClick={() => {
             if (editMode === true) {
-              updateTask({ id: id, content: contentInput });
+              updateTaskOpt(id, { id: id, content: contentInput });
             }
             setEditMode(!editMode);
           }}

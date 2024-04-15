@@ -13,9 +13,9 @@ type TTasksProvider = {
   allTasks: TTask[];
   setAllTasks: (allTasks: TTask[]) => void;
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
   deleteTask: (id: number) => Promise<unknown>;
   updateTask: (taskInfo: Partial<TTask>) => Promise<unknown>;
+  updateTaskOpt: (id: number, taskInfo: Partial<TTask>) => Promise<unknown>;
 };
 
 const TasksContext = createContext({} as TTasksProvider);
@@ -58,6 +58,17 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const updateTaskOpt = (id: number, taskInfo: Partial<TTask>) => {
+    setAllTasks(
+      allTasks.map((task) => (task.id === id ? { ...task, ...taskInfo } : task))
+    );
+
+    return Requests.updateTask(taskInfo).catch((e) => {
+      toast.error(e);
+      setAllTasks(allTasks);
+    });
+  };
+
   useEffect(() => {
     refetchData();
   }, []);
@@ -68,8 +79,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         allTasks,
         setAllTasks,
         isLoading,
-        setIsLoading,
         updateTask,
+        updateTaskOpt,
         deleteTask,
       }}
     >
