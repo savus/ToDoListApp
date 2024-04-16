@@ -1,3 +1,7 @@
+.tasks-body {
+  margin-top: 50px;
+}
+
 .tasks-body .heading {
   text-align: center;
   padding-bottom: 30px;
@@ -12,11 +16,23 @@
   justify-content: space-between;
 }
 
+.tasks-body .task-content {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 .tasks-body .task-content,
 .tasks-body .task-input-field {
   line-height: 2;
   font-size: var(--size-18);
   letter-spacing: 1px;
+  width: 250px;
+  height: 40px;
+}
+
+.tasks-body .task-input-field {
+  display: none;
 }
 
 .tasks-body .task.edit-mode .task-content {
@@ -27,19 +43,20 @@
   text-decoration: line-through;
 }
 
-.tasks-body .task-input-field {
-  padding-left: 10px;
-  color: #888;
-  border-radius: 8px;
-  outline: none;
-  display: none;
-}
-
 .tasks-body .task.edit-mode .task-input-field {
   display: unset;
 }
 
-.tasks-body .button-group {
-  display: flex;
-  gap: 15px;
+@media (max-width: 767px) {
+  .tasks-body .task {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task button,
+  .task .task-input-field,
+  .task .task-content {
+    width: 100%;
+    text-align: center;
+  }
 }

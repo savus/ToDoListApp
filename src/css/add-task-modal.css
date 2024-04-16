@@ -1,0 +1,57 @@
+.add-task-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task-modal .form-container {
+  width: 65%;
+  min-height: 65%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-task-modal .form-header {
+  --header-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: var(--modal-header-height);
+}
+
+.add-task-modal .form-header {
+  font-size: calc(var(--modal-header-height) * 0.3);
+}
+
+.add-task-modal .close-button {
+  font-size: calc(var(--modal-header-height) * 0.4);
+}
+
+.add-task-modal .close-button {
+  position: relative;
+  left: 250px;
+}
+
+.add-task-modal input {
+  width: 60%;
+}
+
+.add-task-modal input,
+.add-task-modal .error-message {
+  font-size: var(--size-30);
+}

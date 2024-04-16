@@ -26,22 +26,20 @@ export const Task = ({
       <TextInput
         inputProps={{
           type: "text",
-          className: "task-input-field",
+          className: "task-input-field input-primary",
           placeholder: contentInput,
           value: contentInput,
           onChange: ({ target }) => setContentInput(target.value),
         }}
       />
-      <div className="button-group">
-        <EditButton
-          onClick={() => {
-            if (editMode === true) {
-              updateTaskOpt(id, { id: id, content: contentInput });
-            }
-            setEditMode(!editMode);
-          }}
-        />
-      </div>
+      <EditButton
+        onClick={() => {
+          if (editMode === true) {
+            updateTaskOpt(id, { id: id, content: contentInput });
+          }
+          setEditMode(!editMode);
+        }}
+      />
       <DeleteButton
         onClick={() => {
           deleteTask(id);
@@ -51,7 +49,7 @@ export const Task = ({
         completedState={completedState}
         onClick={() => {
           setCompletedState(!completedState);
-          updateTask({ id: id, isCompleted: !completedState });
+          updateTaskOpt(id, { id: id, isCompleted: !completedState });
         }}
       />
     </div>
