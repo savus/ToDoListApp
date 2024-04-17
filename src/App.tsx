@@ -23,7 +23,7 @@ function App() {
         </TasksProvider>
       </MainContainer>
       {/* MODALS */}
-      <AddTaskModal />
+      {/* <AddTaskModal /> */}
     </>
   );
 }

@@ -69,7 +69,6 @@ ul {
   box-shadow: 1px 1px 1px 1px rgba(33, 33, 33, 0.5);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
 }
 
 .btn-primary::after {
@@ -115,37 +114,18 @@ ul {
   color: #000;
   padding: 0.5rem;
   border-radius: 10px;
+  position: relative;
 }
 
 .manage-tasks-btn:hover {
   background-color: var(--bg-soft);
 }
 
+.tooltip-container:hover .tooltip {
+  --tooltip-scale: 1;
+}
+
 .tooltip {
-  position: relative;
-}
-
-.tooltip.above .tooltip-message {
-  top: -100%;
-  transform-origin: bottom center;
-}
-
-.tooltip.below .tooltip-message {
-  bottom: -100%;
-  transform-origin: top center;
-}
-
-.tooltip.left .tooltip-message {
-  right: 100%;
-  transform-origin: right center;
-}
-
-.tooltip.right .tooltip-message {
-  left: 100%;
-  transform-origin: left center;
-}
-
-.tooltip .tooltip-message {
   --tooltip-color: #fff;
   --tooltip-bg: #363636;
   --tooltip-speed: 350ms;
@@ -158,10 +138,27 @@ ul {
   transition: transform var(--tooltip-speed) ease;
   background-color: var(--tooltip-bg);
   font-size: var(--size-20);
+  width: max-content;
 }
 
-.tooltip:hover .tooltip-message {
-  --tooltip-scale: 1;
+.tooltip.above {
+  top: -100%;
+  transform-origin: bottom center;
+}
+
+.tooltip.below {
+  bottom: -100%;
+  transform-origin: top center;
+}
+
+.tooltip.left {
+  right: 100%;
+  transform-origin: right center;
+}
+
+.tooltip.right {
+  left: 100%;
+  transform-origin: left center;
 }
 
 @media (max-width: 767px) {

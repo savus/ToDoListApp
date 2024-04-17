@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TTask } from "../types";
-import { EditButton } from "./shared/EditButton";
+import { Button, EditButton } from "./shared/Button";
 import { DeleteButton } from "./shared/DeleteButton";
 import { DoneButton } from "./shared/DoneButton";
 import { TextInput } from "./shared/TextInput";
@@ -32,25 +32,36 @@ export const Task = ({
           onChange: ({ target }) => setContentInput(target.value),
         }}
       />
-      <EditButton
+      <Button
+        className="edit-button"
+        tooltipLocation="above"
+        tooltipMessage="Click to edit"
         onClick={() => {
           if (editMode === true) {
             updateTaskOpt(id, { id: id, content: contentInput });
           }
           setEditMode(!editMode);
         }}
+        buttonText="Edit"
       />
-      <DeleteButton
+      <Button
+        className="delete-button"
+        tooltipLocation="below"
+        tooltipMessage="Click to delete"
         onClick={() => {
           deleteTask(id);
         }}
+        buttonText="Delete"
       />
-      <DoneButton
-        completedState={completedState}
+      <Button
+        className="done-button"
+        tooltipLocation="below"
+        tooltipMessage="Click to mark completed"
         onClick={() => {
           setCompletedState(!completedState);
           updateTaskOpt(id, { id: id, isCompleted: !completedState });
         }}
+        buttonText={completedState ? "Mark as Undone" : "Mark as done"}
       />
     </div>
   );

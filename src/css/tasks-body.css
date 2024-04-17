@@ -47,6 +47,10 @@
   display: unset;
 }
 
+.task button {
+  position: relative;
+}
+
 @media (max-width: 767px) {
   .tasks-body .task {
     flex-direction: column;
