@@ -9,10 +9,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity var(--transition-speed) ease-in-out,
+    visibility var(--transition-speed) ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.add-task-modal.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .add-task-modal .form-container {
-  width: 65%;
+  width: 774px;
   min-height: 65%;
   background-color: #fff;
   border-radius: 10px;
@@ -23,6 +32,19 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  transition: opacity calc(var(--transition-speed) + 100ms) ease-in-out,
+    visibility calc(var(--transition-speed) + 100ms) ease-in-out,
+    top calc(var(--transition-speed) + 100ms);
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  top: 20%;
+}
+
+.add-task-modal.active .form-container {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
 }
 
 .add-task-modal .form-header {
@@ -40,18 +62,21 @@
 
 .add-task-modal .close-button {
   font-size: calc(var(--modal-header-height) * 0.4);
-}
-
-.add-task-modal .close-button {
+  cursor: pointer;
   position: relative;
   left: 250px;
 }
 
-.add-task-modal input {
+.add-task-modal .new-task-input {
+  padding: 0.5rem 0.8rem;
+}
+
+.add-task-modal .new-task-input,
+.add-task-modal .confirm-button {
   width: 60%;
 }
 
-.add-task-modal input,
+.add-task-modal .new-task-input,
 .add-task-modal .error-message {
   font-size: var(--size-30);
 }

@@ -7,14 +7,16 @@ import { TasksBody } from "./Components/TasksBody";
 import { ManageTasksButton } from "./Components/ManageTasksButton";
 import { TasksProvider } from "./Components/Providers/TasksProvider";
 import { AddTaskModal } from "./Components/AddTaskModal";
+import { useState } from "react";
 
 function App() {
+  const [addTaskForm, setAddTaskForm] = useState(false);
   return (
     <>
       <MainContainer>
         <TasksProvider>
           <div className="left-side-container">
-            <ManageTasksButton />
+            <ManageTasksButton setAddTaskForm={setAddTaskForm} />
           </div>
           <div className="right-side-container">
             <AppHeader />
@@ -23,7 +25,7 @@ function App() {
         </TasksProvider>
       </MainContainer>
       {/* MODALS */}
-      {/* <AddTaskModal /> */}
+      <AddTaskModal addTaskForm={addTaskForm} setAddTaskForm={setAddTaskForm} />
     </>
   );
 }

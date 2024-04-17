@@ -20,7 +20,9 @@ export const Button = ({
       }}
     >
       {buttonText}
-      <div className={`tooltip ${tooltipLocation}`}>{tooltipMessage}</div>
+      {tooltipMessage !== "" && (
+        <div className={`tooltip ${tooltipLocation}`}>{tooltipMessage}</div>
+      )}
     </button>
   );
 };

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { TTask } from "../types";
-import { Button, EditButton } from "./shared/Button";
-import { DeleteButton } from "./shared/DeleteButton";
-import { DoneButton } from "./shared/DoneButton";
+import { Button } from "./shared/Button";
 import { TextInput } from "./shared/TextInput";
 import { useTasks } from "./Providers/TasksProvider";
 
