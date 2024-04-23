@@ -16,7 +16,7 @@ export const Task = ({
   const isEditModeActive = () => (editMode ? "edit-mode" : "");
   const isTaskCompleted = () => (completedState ? "completed" : "");
 
-  const { updateTaskOpt, deleteTask } = useTasks();
+  const { updateTaskOpt, deleteTaskOpt, isLoading } = useTasks();
 
   return (
     <div className={`task ${isEditModeActive()}`}>
@@ -41,15 +41,17 @@ export const Task = ({
           setEditMode(!editMode);
         }}
         buttonText="Edit"
+        isLoading={isLoading}
       />
       <Button
         className="delete-button"
         tooltipLocation="below"
         tooltipMessage="Click to delete"
         onClick={() => {
-          deleteTask(id);
+          deleteTaskOpt(id);
         }}
         buttonText="Delete"
+        isLoading={isLoading}
       />
       <Button
         className="done-button"
@@ -64,6 +66,7 @@ export const Task = ({
           updateTaskOpt(id, { id: id, isCompleted: !completedState });
         }}
         buttonText={completedState ? "Mark as Undone" : "Mark as done"}
+        isLoading={isLoading}
       />
     </div>
   );

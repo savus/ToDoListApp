@@ -161,6 +161,10 @@ ul {
   transform-origin: left center;
 }
 
+.error-message {
+  color: var(--error-message);
+}
+
 @media (max-width: 767px) {
   .main-container {
     flex-direction: column;

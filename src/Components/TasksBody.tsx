@@ -4,10 +4,11 @@ import { Task } from "./Task";
 
 export const TasksBody = () => {
   const { allTasks } = useTasks();
+  const reversedTasks = [...allTasks].reverse();
   return (
     <div className="tasks-body">
       <h3 className="heading">Tasks List</h3>
-      {allTasks.map((task) => (
+      {reversedTasks.map((task) => (
         <Task key={task.id} task={task} />
       ))}
     </div>

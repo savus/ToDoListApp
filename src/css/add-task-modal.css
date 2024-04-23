@@ -61,10 +61,11 @@
 }
 
 .add-task-modal .close-button {
+  --left-offset: 250px;
   font-size: calc(var(--modal-header-height) * 0.4);
   cursor: pointer;
   position: relative;
-  left: 250px;
+  left: var(--left-offset);
 }
 
 .add-task-modal .new-task-input {
@@ -79,4 +80,10 @@
 .add-task-modal .new-task-input,
 .add-task-modal .error-message {
   font-size: var(--size-30);
+}
+
+@media (max-width: 767px) {
+  .add-task-modal .close-button {
+    --left-offset: 100px;
+  }
 }

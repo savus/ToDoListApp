@@ -1,11 +1,6 @@
 {
   "tasks": [
     {
-      "id": "34f0",
-      "content": "walk the dogs",
-      "isCompleted": false
-    },
-    {
       "id": "ce78",
       "content": "walk the dog",
       "isCompleted": false
@@ -23,6 +18,16 @@
     {
       "id": "a578",
       "content": "walk the dog",
+      "isCompleted": false
+    },
+    {
+      "id": "42da",
+      "content": "mew",
+      "isCompleted": false
+    },
+    {
+      "id": "48df",
+      "content": "pet the dog",
       "isCompleted": false
     }
   ]

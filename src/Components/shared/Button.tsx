@@ -4,19 +4,26 @@ export const Button = ({
   tooltipMessage,
   className,
   buttonText,
+  isLoading,
 }: {
   onClick: () => void;
   tooltipLocation: string;
   tooltipMessage: string;
   className: string;
   buttonText: string;
+  isLoading: boolean;
 }) => {
   return (
     <button
       className={`${className} btn btn-primary tooltip-container`}
       onClick={(e) => {
         e.preventDefault();
-        onClick();
+        if (!isLoading) {
+          onClick();
+        }
+      }}
+      style={{
+        cursor: isLoading ? "no-drop" : "pointer",
       }}
     >
       {buttonText}
