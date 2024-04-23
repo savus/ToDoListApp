@@ -80,7 +80,7 @@ ul {
   left: 0;
   background-color: var(--bg-soft);
   transform: scale(0);
-  transition: transform calc(var(--transition-speed) - 100ms) ease-in;
+  transition: transform var(--transition-speed) ease-in;
   border-radius: var(--border-radius);
 }
 

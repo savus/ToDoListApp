@@ -11,6 +11,18 @@ const getAllTasks = (): Promise<TTask[]> =>
     return response.json();
   });
 
+const postNewTask = (body: Omit<TTask, "id">): Promise<TTask[]> =>
+  fetch(`${base_url}/${endPoint}`, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Could not post new task");
+    }
+    return response.json();
+  });
+
 const deleteTask = (id: number): Promise<TTask[]> =>
   fetch(`${base_url}/${endPoint}/${id}`, {
     method: "DELETE",
@@ -35,6 +47,7 @@ const updateTask = (taskInfo: Partial<TTask>): Promise<TTask[]> =>
 
 export const Requests = {
   getAllTasks,
+  postNewTask,
   updateTask,
   deleteTask,
 };

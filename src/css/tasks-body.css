@@ -20,6 +20,7 @@
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
+  user-select: none;
 }
 
 .tasks-body .task-content,

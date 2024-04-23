@@ -54,7 +54,11 @@ export const Task = ({
       <Button
         className="done-button"
         tooltipLocation="below"
-        tooltipMessage="Click to mark completed"
+        tooltipMessage={
+          completedState
+            ? `Click to mark completed`
+            : `Click to mark incompleted`
+        }
         onClick={() => {
           setCompletedState(!completedState);
           updateTaskOpt(id, { id: id, isCompleted: !completedState });

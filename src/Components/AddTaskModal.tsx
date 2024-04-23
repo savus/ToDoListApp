@@ -3,7 +3,10 @@ import "../css/add-task-modal.css";
 import { CloseFormButton } from "./CloseFormButton";
 import { Button } from "./shared/Button";
 import { TextInput } from "./shared/TextInput";
-import { isTaskEmpty } from "../validations";
+// import { isTaskEmpty } from "../validations";
+import { ErrorMessage } from "./shared/ErrorMessage";
+import { useTasks } from "./Providers/TasksProvider";
+import toast from "react-hot-toast";
 export const AddTaskModal = ({
   addTaskForm,
   setAddTaskForm,
@@ -13,7 +16,11 @@ export const AddTaskModal = ({
 }) => {
   const isFormOpen = () => (addTaskForm ? "active" : "");
   const [newTaskInput, setNewTaskInput] = useState("");
-  const taskInputIsValid = isTaskEmpty(newTaskInput);
+  // const taskInputIsValid = isTaskEmpty(newTaskInput);
+  const { postNewTask } = useTasks();
+  const resetValues = () => {
+    setNewTaskInput("");
+  };
   return (
     <form action="#" className={`add-task-modal ${isFormOpen()}`}>
       <div className="form-container">
@@ -37,13 +44,16 @@ export const AddTaskModal = ({
           className="confirm-button btn btn-primary"
           tooltipLocation=""
           tooltipMessage=""
-          onClick={() => {}}
+          onClick={() => {
+            postNewTask({ content: newTaskInput, isCompleted: false }).catch(
+              (e) => {
+                toast.error(e);
+              }
+            );
+          }}
           buttonText="Confirm"
         />
-
-        {taskInputIsValid && (
-          <div className="error-message">Invalid form information</div>
-        )}
+        <ErrorMessage show={true} message="Information is invalid" />
       </div>
     </form>
   );
