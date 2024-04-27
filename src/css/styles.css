@@ -139,6 +139,7 @@ ul {
   background-color: var(--tooltip-bg);
   font-size: var(--size-20);
   width: max-content;
+  z-index: 10;
 }
 
 .tooltip.above {

@@ -6,6 +6,89 @@
   text-align: center;
   padding-bottom: 30px;
   border-bottom: 1px solid black;
+  position: relative;
+}
+
+.add-task-modal {
+  --scale: 0;
+  color: var(--font-modal);
+  position: absolute;
+  top: 370%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform var(--transition-speed) ease-in-out;
+  transform: scale(var(--scale));
+  transform-origin: center bottom;
+}
+
+.add-task-modal.active {
+  --scale: 1;
+}
+
+.add-task-modal .form-container {
+  width: 774px;
+  min-height: 45%;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.add-task-modal.active .form-container {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+
+.add-task-modal .form-header {
+  --header-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: var(--modal-header-height);
+}
+
+.add-task-modal .form-header {
+  font-size: calc(var(--modal-header-height) * 0.3);
+}
+
+.add-task-modal .close-button {
+  --left-offset: 250px;
+  font-size: calc(var(--modal-header-height) * 0.4);
+  cursor: pointer;
+  position: relative;
+  left: var(--left-offset);
+  color: var(--font-modal);
+}
+
+.add-task-modal .new-task-input {
+  padding: 0.5rem 0.8rem;
+}
+
+.add-task-modal .new-task-input,
+.add-task-modal .confirm-button {
+  width: 60%;
+}
+
+.add-task-modal .confirm-button {
+  background-color: white;
+}
+
+.add-task-modal .new-task-input,
+.add-task-modal .error-message {
+  font-size: var(--size-30);
 }
 
 .tasks-body .task {
@@ -53,6 +136,10 @@
 }
 
 @media (max-width: 767px) {
+  .add-task-modal .close-button {
+    --left-offset: 100px;
+  }
+
   .tasks-body .task {
     flex-direction: column;
     align-items: center;

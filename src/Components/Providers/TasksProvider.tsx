@@ -18,6 +18,8 @@ type TTasksProvider = {
   deleteTaskOpt: (id: number) => Promise<unknown>;
   updateTask: (taskInfo: Partial<TTask>) => Promise<unknown>;
   updateTaskOpt: (id: number, taskInfo: Partial<TTask>) => Promise<unknown>;
+  addTaskForm: boolean;
+  setAddTaskForm: (addTaskFrom: boolean) => void;
 };
 
 const TasksContext = createContext({} as TTasksProvider);
@@ -25,6 +27,7 @@ const TasksContext = createContext({} as TTasksProvider);
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const [allTasks, setAllTasks] = useState<TTask[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [addTaskForm, setAddTaskForm] = useState(false);
 
   const refetchData = () => {
     setIsLoading(true);
@@ -106,6 +109,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         updateTaskOpt,
         deleteTask,
         deleteTaskOpt,
+        addTaskForm,
+        setAddTaskForm,
       }}
     >
       {children}

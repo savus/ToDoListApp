@@ -2,18 +2,28 @@
   "tasks": [
     {
       "id": "ce78",
-      "content": "walk the dog",
-      "isCompleted": false
-    },
-    {
-      "id": "7542",
-      "content": "walk the dog",
-      "isCompleted": false
+      "content": "walk the dogs plural",
+      "isCompleted": true
     },
     {
       "id": "f276",
       "content": "walk the dog",
-      "isCompleted": false
+      "isCompleted": true
+    },
+    {
+      "content": "pet the pooch",
+      "isCompleted": false,
+      "id": "f7gzyhR"
+    },
+    {
+      "content": "pet the pooch again",
+      "isCompleted": false,
+      "id": "ZsmNURt"
+    },
+    {
+      "content": "pet the pooc",
+      "isCompleted": false,
+      "id": "A7DeX77"
     }
   ]
 }

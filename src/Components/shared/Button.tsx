@@ -26,7 +26,7 @@ export const Button = ({
         cursor: isLoading ? "no-drop" : "pointer",
       }}
     >
-      {buttonText}
+      {isLoading ? "Loading..." : buttonText}
       {tooltipMessage !== "" && (
         <div className={`tooltip ${tooltipLocation}`}>{tooltipMessage}</div>
       )}

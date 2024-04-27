@@ -1,8 +1,7 @@
-export const ManageTasksButton = ({
-  setAddTaskForm,
-}: {
-  setAddTaskForm: (addTaskForm: boolean) => void;
-}) => {
+import { useTasks } from "./Providers/TasksProvider";
+
+export const ManageTasksButton = () => {
+  const { setAddTaskForm } = useTasks();
   return (
     <button
       className="manage-tasks-btn btn tooltip-container"
@@ -11,7 +10,7 @@ export const ManageTasksButton = ({
       }}
     >
       <i className="fa-solid fa-plus"></i>
-      <div className="tooltip right">Practice</div>
+      <div className="tooltip right">Add new task</div>
     </button>
   );
 };
