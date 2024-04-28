@@ -1,0 +1,58 @@
+.add-task-form {
+  --scale: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+  z-index: 50;
+  border-radius: 10px;
+  transition: transform var(--transition-speed) ease-in-out;
+  transform: scale(var(--scale));
+  transform-origin: top center;
+}
+
+.add-task-form.open {
+  --scale: 1;
+}
+
+.add-task-form .form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.add-task-form .form-header {
+  display: flex;
+}
+
+.add-task-form .close-button {
+  --left-offset: 200px;
+  position: relative;
+  left: var(--left-offset);
+  font-size: var(--size-25);
+  cursor: pointer;
+}
+
+.add-task-form .form-header,
+.add-task-form .close-button {
+  color: var(--font-modal);
+}
+
+.add-task-form .new-task-input,
+.add-task-form .confirm-button {
+  width: 55%;
+}
+
+.add-task-form .new-task-input {
+  font-size: var(--size-25);
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.add-task-form .confirm-button {
+  background-color: #fff;
+}

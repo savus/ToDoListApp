@@ -7,6 +7,7 @@ import { TasksBody } from "./Components/TasksBody";
 import { ManageTasksButton } from "./Components/ManageTasksButton";
 import { TasksProvider } from "./Components/Providers/TasksProvider";
 import { SideContainer } from "./Components/SideContainer";
+import { AddTaskForm } from "./Components/AddTaskForm";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
             <ManageTasksButton />
           </SideContainer>
           <SideContainer side="right">
-            <AppHeader />
+            <AppHeader>
+              <AddTaskForm />
+            </AppHeader>
             <TasksBody />
           </SideContainer>
         </MainContainer>

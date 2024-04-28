@@ -1,16 +1,15 @@
 import { useTasks } from "./Providers/TasksProvider";
 
 export const ManageTasksButton = () => {
-  const { setAddTaskForm } = useTasks();
+  const { formOpenState, setFormOpenState } = useTasks();
+  const setTooltipMessage = () => (formOpenState ? "Close" : "Add new task");
   return (
     <button
       className="manage-tasks-btn btn tooltip-container"
-      onClick={() => {
-        setAddTaskForm(true);
-      }}
+      onClick={() => setFormOpenState(!formOpenState)}
     >
       <i className="fa-solid fa-plus"></i>
-      <div className="tooltip right">Add new task</div>
+      <div className="tooltip right">{setTooltipMessage()}</div>
     </button>
   );
 };
