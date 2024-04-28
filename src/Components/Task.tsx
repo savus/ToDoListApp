@@ -34,7 +34,7 @@ export const Task = ({
         className="edit-button"
         tooltipLocation="above"
         tooltipMessage="Click to edit"
-        onClick={() => {}}
+        onClick={() => setEditMode(!editMode)}
         buttonText="Edit"
         isLoading={isLoading}
       />

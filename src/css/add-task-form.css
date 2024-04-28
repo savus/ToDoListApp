@@ -56,3 +56,7 @@
 .add-task-form .confirm-button {
   background-color: #fff;
 }
+
+.add-task-form .error-message {
+  font-size: var(--size-25);
+}

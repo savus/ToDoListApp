@@ -1,1 +1,1 @@
-export const isTaskEmpty = (content: string) => content.length > 0;
+export const isTaskEmpty = (task: string) => task.length === 0;

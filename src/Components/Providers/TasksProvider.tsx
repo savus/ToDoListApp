@@ -16,6 +16,7 @@ type TTasksProvider = {
   setIsLoading: (isLoading: boolean) => void;
   formOpenState: boolean;
   setFormOpenState: (formOpenState: boolean) => void;
+  postNewTask: (body: Omit<TTask, "id">) => Promise<unknown>;
 };
 
 const TasksContext = createContext({} as TTasksProvider);
@@ -40,6 +41,20 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const postNewTask = (body: Omit<TTask, "id">) => {
+    setIsLoading(true);
+    return Requests.postNewTask(body)
+      .then(() => {
+        toast.success("New Task posted!");
+      })
+      .catch((e) => {
+        toast.error(e);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   useEffect(() => {
     refetchData();
   }, []);
@@ -53,6 +68,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading,
         formOpenState,
         setFormOpenState,
+        postNewTask,
       }}
     >
       {children}
