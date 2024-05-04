@@ -8,32 +8,27 @@
     {
       "id": "f276",
       "content": "walk the dog",
-      "isCompleted": true
+      "isCompleted": false
     },
     {
-      "content": "pet the pooch",
-      "isCompleted": false,
+      "content": "pet the poochses",
+      "isCompleted": true,
       "id": "f7gzyhR"
     },
     {
       "content": "pet the pooch again",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": "ZsmNURt"
     },
     {
-      "content": "pet the pooc",
-      "isCompleted": false,
-      "id": "A7DeX77"
-    },
-    {
       "content": "sdfwer",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": "BO1weYk"
     },
     {
-      "content": "item 1",
+      "content": "new task",
       "isCompleted": false,
-      "id": "ZYpJwg8"
+      "id": "WfPb96O"
     }
   ]
 }

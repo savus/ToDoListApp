@@ -17,6 +17,8 @@ type TTasksProvider = {
   formOpenState: boolean;
   setFormOpenState: (formOpenState: boolean) => void;
   postNewTask: (body: Omit<TTask, "id">) => Promise<unknown>;
+  updateTask: (body: Partial<TTask>) => Promise<unknown>;
+  deleteTask: (id: number) => Promise<unknown>;
 };
 
 const TasksContext = createContext({} as TTasksProvider);
@@ -44,6 +46,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const postNewTask = (body: Omit<TTask, "id">) => {
     setIsLoading(true);
     return Requests.postNewTask(body)
+      .then(refetchData)
       .then(() => {
         toast.success("New Task posted!");
       })
@@ -53,6 +56,29 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const updateTask = (body: Partial<TTask>) => {
+    //optimistic rendering
+    setAllTasks(
+      allTasks.map((task) =>
+        task.id === body.id ? { ...task, ...body } : task
+      )
+    );
+
+    return Requests.updateTask(body).catch((e) => {
+      toast.error(e);
+      setAllTasks(allTasks);
+    });
+  };
+
+  const deleteTask = (id: number) => {
+    setAllTasks(allTasks.filter((task) => task.id !== id));
+
+    return Requests.deleteTask(id).catch((e) => {
+      toast.error(e);
+      setAllTasks(allTasks);
+    });
   };
 
   useEffect(() => {
@@ -69,6 +95,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         formOpenState,
         setFormOpenState,
         postNewTask,
+        updateTask,
+        deleteTask,
       }}
     >
       {children}
