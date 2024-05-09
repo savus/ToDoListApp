@@ -56,14 +56,14 @@ export const Task = ({
         tooltipLocation="below"
         tooltipMessage={
           completedState
-            ? `Click to mark completed`
-            : `Click to mark incompleted`
+            ? `Click to mark incompleted`
+            : `Click to mark completed`
         }
         onClick={() => {
           setCompletedState(!completedState);
           updateTask({ id: id, isCompleted: !completedState });
         }}
-        buttonText={completedState ? "Mark as Undone" : "Mark as done"}
+        buttonText={completedState ? "Mark as unfinished" : "Mark as finished "}
         isLoading={isLoading}
       />
     </div>
