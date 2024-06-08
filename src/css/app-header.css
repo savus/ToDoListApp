@@ -1,9 +1,0 @@
-.app-header {
-  position: relative;
-}
-
-.app-header .app-title {
-  font-size: var(--size-40);
-  line-height: 0.8;
-  text-align: center;
-}
